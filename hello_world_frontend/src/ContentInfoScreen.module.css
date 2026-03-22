@@ -1,0 +1,221 @@
+.screen {
+  --ci-text-strong: rgba(255, 255, 255, 0.92);
+  --ci-text: rgba(255, 255, 255, 0.78);
+  --ci-text-muted: rgba(255, 255, 255, 0.62);
+
+  --ci-scrim-1: rgba(0, 0, 0, 0.78);
+  --ci-scrim-2: rgba(0, 0, 0, 0.35);
+  --ci-scrim-3: rgba(0, 0, 0, 0);
+
+  --ci-btn-bg: rgba(255, 255, 255, 0.14);
+  --ci-btn-bg-hover: rgba(255, 255, 255, 0.2);
+  --ci-btn-stroke: rgba(255, 255, 255, 0.16);
+
+  --ci-focus: rgba(255, 255, 255, 0.9);
+
+  position: relative;
+  width: 100%;
+  min-height: clamp(18rem, 30vw, 22rem);
+  overflow: hidden;
+  background: #000;
+  color: var(--ci-text-strong);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  transform: scale(1.02);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--ci-scrim-1) 0%,
+    var(--ci-scrim-2) 48%,
+    var(--ci-scrim-3) 78%
+  );
+}
+
+.statusBar {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ci-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.statusLeft,
+.statusRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  opacity: 0.65;
+}
+
+.leftPanel {
+  position: relative;
+  z-index: 3;
+  padding: 3.25rem 1rem 1.25rem;
+  padding-left: clamp(1rem, 5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: min(52vw, 34rem);
+  max-width: 34rem;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.2vw, 2.05rem);
+  line-height: 1.15;
+  font-weight: 750;
+  color: var(--ci-text-strong);
+}
+
+.subline {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--ci-text-muted);
+  max-width: 34rem;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ci-text-muted);
+}
+
+.bullet {
+  opacity: 0.7;
+}
+
+.description {
+  margin: 0;
+  margin-top: 0.25rem;
+  max-width: 32rem;
+
+  font-size: 0.875rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--ci-text);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.actions {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.iconBtn {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--ci-btn-stroke);
+  background: var(--ci-btn-bg);
+  color: var(--ci-text-strong);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease,
+    border-color 120ms ease, box-shadow 120ms ease;
+  backdrop-filter: blur(2px);
+}
+
+.iconBtnPrimary {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.iconBtn:hover {
+  background: var(--ci-btn-bg-hover);
+}
+
+.iconBtn:active {
+  transform: scale(0.98);
+}
+
+.iconBtn:focus-visible {
+  outline: 2px solid var(--ci-focus);
+  outline-offset: 2px;
+}
+
+.icon {
+  font-size: 1.05rem;
+  line-height: 1;
+  transform: translateY(-0.02rem);
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .leftPanel {
+    width: min(64vw, 34rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .statusBar {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.625rem;
+  }
+
+  .leftPanel {
+    width: 100%;
+    max-width: none;
+    padding-top: 3rem;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .scrim {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.86) 0%,
+      rgba(0, 0, 0, 0.55) 65%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+}

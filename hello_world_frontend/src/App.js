@@ -1,14 +1,9 @@
 import React from "react";
 import "./App.css";
-import ContentInfoScreen from "./ContentInfoScreen";
 
 // PUBLIC_INTERFACE
 function App() {
-  return (
-    <div className="App">
-      <ContentInfoScreen />
-    </div>
-  );
+  return <div className="App">Hello World</div>;
 }
 
 export default App;
